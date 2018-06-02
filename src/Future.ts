@@ -5,7 +5,7 @@ export enum FutureState {
 export class Future<T> {
     readonly promise : Promise<T>;
 
-    private _state : FutureState;
+    private _state : FutureState = FutureState.Pending;
 
     public get isPending () : boolean { return this._state == FutureState.Pending }
 
