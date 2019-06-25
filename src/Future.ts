@@ -3,6 +3,22 @@ export enum FutureState {
 };
 
 export class Future<T> {
+    public static resolve <T> ( value ?: T | PromiseLike<T> ) : Future<T> {
+        const future = new Future<T>();
+
+        future.resolve( value );
+
+        return future;
+    }
+
+    public static reject <T = never> ( reason ?: any ) : Future<T> {
+        const future = new Future<T>();
+
+        future.reject( reason );
+
+        return future;
+    }
+
     readonly promise : Promise<T>;
 
     private _state : FutureState = FutureState.Pending;
